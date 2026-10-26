@@ -1,0 +1,17 @@
+{
+  "name": "bc7enc-rdo",
+  "version-date": "2026-07-31",
+  "description": "BC1-BC7 texture encoders (bc7enc + rgbcx) and a BC7 decoder (overlay port for forge3d; not in the pinned vcpkg baseline)",
+  "homepage": "https://github.com/richgel999/bc7enc_rdo",
+  "license": "MIT OR Unlicense",
+  "dependencies": [
+    {
+      "name": "vcpkg-cmake",
+      "host": true
+    },
+    {
+      "name": "vcpkg-cmake-config",
+      "host": true
+    }
+  ]
+}

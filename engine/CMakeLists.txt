@@ -1,0 +1,15 @@
+# SPDX-License-Identifier: Apache-2.0
+# Engine modules, bottom layer first (see cmake/F3DLayering.cmake).
+add_subdirectory(core)
+add_subdirectory(scene)
+add_subdirectory(ops)
+add_subdirectory(assets)
+add_subdirectory(terrain)
+add_subdirectory(world)
+add_subdirectory(modeling)
+add_subdirectory(render/rhi)
+add_subdirectory(render/graph)
+add_subdirectory(render/upscale)
+add_subdirectory(render/raster)
+add_subdirectory(io)
+add_subdirectory(api)

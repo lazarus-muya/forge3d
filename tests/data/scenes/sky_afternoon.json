@@ -1,0 +1,9 @@
+{
+  "format": "forge3d.ops",
+  "version": 1,
+  "ops": [
+    { "op": "entity.create", "params": { "name": "Sky", "guid": "00000000-0000-4000-8000-0000000002a1" } },
+    { "op": "entity.add_component", "params": { "entity": "00000000-0000-4000-8000-0000000002a1", "component": "Sky" } },
+    { "op": "entity.set_property", "params": { "entity": "00000000-0000-4000-8000-0000000002a1", "path": "Sky.time_of_day", "value": 15.0 } }
+  ]
+}

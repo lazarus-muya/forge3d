@@ -1,0 +1,18 @@
+{
+  "format": "forge3d.golden",
+  "version": 1,
+  "description": "Unlit view mode.",
+  "scripts": [
+    "tests/data/scenes/sky_1200.json"
+  ],
+  "capture": {
+    "width": 480,
+    "height": 270,
+    "mode": "unlit",
+    "bookmark": "View"
+  },
+  "threshold": {
+    "ssim": 0.99,
+    "block_ssim": 0.9
+  }
+}

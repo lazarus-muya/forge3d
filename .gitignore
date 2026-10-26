@@ -1,0 +1,28 @@
+# Build output
+build/
+out/
+vcpkg_installed/
+/_deps/
+
+# IDE / user files
+*.user
+.vs/
+.idea/
+.vscode/*
+!.vscode/extensions.json
+CMakeUserPresets.json
+
+# Runtime files
+imgui.ini
+*.autosave.forge
+*.forge.tmp
+
+# Test assets fetched on demand (tools/fetch_test_assets.py), not redistributable here
+tests/data/gltf/DamagedHelmet.glb
+tests/data/gltf/MetalRoughSpheres.glb
+
+# Dev enviroment
+/phases.md
+/plan.md
+/design
+samples/reference/

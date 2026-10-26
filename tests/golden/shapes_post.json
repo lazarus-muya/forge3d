@@ -1,0 +1,282 @@
+{
+  "format": "forge3d.golden",
+  "version": 1,
+  "description": "Modeling shapes (and an inset, extruded, subdivided cube) under the noon sky; PostProcess bloom, vignette and white balance; rendered at 75 % screen percentage.",
+  "scripts": [
+    "tests/data/scenes/sky_1200.json"
+  ],
+  "ops": [
+    {
+      "op": "entity.create",
+      "params": {
+        "name": "cube",
+        "guid": "00000000-0000-4000-8000-000000000400"
+      }
+    },
+    {
+      "op": "modeling.set_shape",
+      "params": {
+        "entity": "00000000-0000-4000-8000-000000000400",
+        "shape": "cube",
+        "size": [
+          1,
+          1,
+          1
+        ],
+        "segments_a": 1,
+        "segments_b": 1
+      }
+    },
+    {
+      "op": "entity.set_property",
+      "params": {
+        "entity": "00000000-0000-4000-8000-000000000400",
+        "path": "Transform.translation",
+        "value": [
+          -3.0,
+          0.0,
+          0.5
+        ]
+      }
+    },
+    {
+      "op": "entity.create",
+      "params": {
+        "name": "sphere",
+        "guid": "00000000-0000-4000-8000-000000000401"
+      }
+    },
+    {
+      "op": "modeling.set_shape",
+      "params": {
+        "entity": "00000000-0000-4000-8000-000000000401",
+        "shape": "sphere",
+        "size": [
+          1,
+          1,
+          1
+        ],
+        "segments_a": 32,
+        "segments_b": 16
+      }
+    },
+    {
+      "op": "entity.set_property",
+      "params": {
+        "entity": "00000000-0000-4000-8000-000000000401",
+        "path": "Transform.translation",
+        "value": [
+          -1.5,
+          0.0,
+          0.5
+        ]
+      }
+    },
+    {
+      "op": "entity.create",
+      "params": {
+        "name": "cylinder",
+        "guid": "00000000-0000-4000-8000-000000000402"
+      }
+    },
+    {
+      "op": "modeling.set_shape",
+      "params": {
+        "entity": "00000000-0000-4000-8000-000000000402",
+        "shape": "cylinder",
+        "size": [
+          1,
+          1,
+          1
+        ],
+        "segments_a": 24,
+        "segments_b": 1
+      }
+    },
+    {
+      "op": "entity.set_property",
+      "params": {
+        "entity": "00000000-0000-4000-8000-000000000402",
+        "path": "Transform.translation",
+        "value": [
+          0.0,
+          0.0,
+          0.5
+        ]
+      }
+    },
+    {
+      "op": "entity.create",
+      "params": {
+        "name": "torus",
+        "guid": "00000000-0000-4000-8000-000000000403"
+      }
+    },
+    {
+      "op": "modeling.set_shape",
+      "params": {
+        "entity": "00000000-0000-4000-8000-000000000403",
+        "shape": "torus",
+        "size": [
+          1,
+          0.35,
+          1
+        ],
+        "segments_a": 32,
+        "segments_b": 16
+      }
+    },
+    {
+      "op": "entity.set_property",
+      "params": {
+        "entity": "00000000-0000-4000-8000-000000000403",
+        "path": "Transform.translation",
+        "value": [
+          1.5,
+          0.0,
+          0.5
+        ]
+      }
+    },
+    {
+      "op": "entity.create",
+      "params": {
+        "name": "stairs",
+        "guid": "00000000-0000-4000-8000-000000000404"
+      }
+    },
+    {
+      "op": "modeling.set_shape",
+      "params": {
+        "entity": "00000000-0000-4000-8000-000000000404",
+        "shape": "stairs",
+        "size": [
+          1,
+          1.2,
+          1.5
+        ],
+        "segments_a": 6,
+        "segments_b": 1
+      }
+    },
+    {
+      "op": "entity.set_property",
+      "params": {
+        "entity": "00000000-0000-4000-8000-000000000404",
+        "path": "Transform.translation",
+        "value": [
+          3.0,
+          0.0,
+          0.5
+        ]
+      }
+    },
+    {
+      "op": "entity.create",
+      "params": {
+        "name": "Edited",
+        "guid": "00000000-0000-4000-8000-000000000410"
+      }
+    },
+    {
+      "op": "modeling.set_shape",
+      "params": {
+        "entity": "00000000-0000-4000-8000-000000000410",
+        "shape": "cube",
+        "size": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "op": "modeling.inset",
+      "params": {
+        "entity": "00000000-0000-4000-8000-000000000410",
+        "faces": [
+          3
+        ],
+        "amount": 0.3
+      }
+    },
+    {
+      "op": "modeling.extrude",
+      "params": {
+        "entity": "00000000-0000-4000-8000-000000000410",
+        "faces": [
+          3
+        ],
+        "distance": 0.6
+      }
+    },
+    {
+      "op": "modeling.subdivide",
+      "params": {
+        "entity": "00000000-0000-4000-8000-000000000410",
+        "levels": 2
+      }
+    },
+    {
+      "op": "entity.set_property",
+      "params": {
+        "entity": "00000000-0000-4000-8000-000000000410",
+        "path": "Transform.translation",
+        "value": [
+          0.0,
+          0.0,
+          -1.5
+        ]
+      }
+    },
+    {
+      "op": "entity.create",
+      "params": {
+        "name": "Post",
+        "guid": "00000000-0000-4000-8000-000000000411"
+      }
+    },
+    {
+      "op": "entity.add_component",
+      "params": {
+        "entity": "00000000-0000-4000-8000-000000000411",
+        "component": "PostProcess"
+      }
+    },
+    {
+      "op": "entity.set_property",
+      "params": {
+        "entity": "00000000-0000-4000-8000-000000000411",
+        "path": "PostProcess.bloom_intensity",
+        "value": 0.08
+      }
+    },
+    {
+      "op": "entity.set_property",
+      "params": {
+        "entity": "00000000-0000-4000-8000-000000000411",
+        "path": "PostProcess.vignette",
+        "value": 0.5
+      }
+    },
+    {
+      "op": "entity.set_property",
+      "params": {
+        "entity": "00000000-0000-4000-8000-000000000411",
+        "path": "PostProcess.temperature",
+        "value": 5600.0
+      }
+    }
+  ],
+  "capture": {
+    "width": 480,
+    "height": 270,
+    "mode": "lit",
+    "bookmark": "View",
+    "screen_percentage": 75
+  },
+  "threshold": {
+    "ssim": 0.99,
+    "block_ssim": 0.9
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "format": "forge3d.golden",
+  "version": 1,
+  "description": "Self-check: the morning scene against the noon reference must fail.",
+  "scripts": ["tests/data/scenes/sky_0600.json"],
+  "capture": { "width": 480, "height": 270, "mode": "lit", "bookmark": "View" },
+  "reference": "../../golden/sky_noon.png",
+  "threshold": { "ssim": 0.99, "block_ssim": 0.9 }
+}

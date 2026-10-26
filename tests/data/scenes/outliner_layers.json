@@ -1,0 +1,27 @@
+{
+  "format": "forge3d.ops",
+  "version": 1,
+  "ops": [
+    { "op": "entity.create", "params": { "name": "Props", "guid": "00000000-0000-4000-8000-000000000001" } },
+    { "op": "entity.create", "params": { "name": "Rock A", "guid": "00000000-0000-4000-8000-000000000002", "parent": "00000000-0000-4000-8000-000000000001" } },
+    { "op": "entity.create", "params": { "name": "Rock B", "guid": "00000000-0000-4000-8000-000000000003", "parent": "00000000-0000-4000-8000-000000000001" } },
+    { "op": "entity.set_property", "params": { "entity": "00000000-0000-4000-8000-000000000003", "path": "Transform.translation", "value": [2.0, 0.0, 1.0] } },
+    { "op": "entity.create", "params": { "name": "Crates", "guid": "00000000-0000-4000-8000-000000000004" } },
+    { "op": "entity.create", "params": { "name": "Crate 1", "guid": "00000000-0000-4000-8000-000000000005", "parent": "00000000-0000-4000-8000-000000000004" } },
+    { "op": "entity.create", "params": { "name": "Lights", "guid": "00000000-0000-4000-8000-000000000006" } },
+    { "op": "entity.create", "params": { "name": "Sun", "guid": "00000000-0000-4000-8000-000000000007", "parent": "00000000-0000-4000-8000-000000000006" } },
+
+    { "op": "layer.create", "params": { "name": "Environment", "guid": "00000000-0000-4000-8000-0000000000a1" } },
+    { "op": "layer.create", "params": { "name": "Hidden props", "guid": "00000000-0000-4000-8000-0000000000a2" } },
+    { "op": "layer.create", "params": { "name": "Lighting", "guid": "00000000-0000-4000-8000-0000000000a3" } },
+    { "op": "layer.assign", "params": { "entities": ["00000000-0000-4000-8000-000000000001"], "layer": "00000000-0000-4000-8000-0000000000a1" } },
+    { "op": "layer.assign", "params": { "entities": ["00000000-0000-4000-8000-000000000004"], "layer": "00000000-0000-4000-8000-0000000000a2" } },
+    { "op": "layer.assign", "params": { "entities": ["00000000-0000-4000-8000-000000000006"], "layer": "00000000-0000-4000-8000-0000000000a3" } },
+    { "op": "layer.set_locked", "params": { "layer": "00000000-0000-4000-8000-0000000000a1", "value": true } },
+    { "op": "layer.set_visible", "params": { "layer": "00000000-0000-4000-8000-0000000000a2", "value": false } },
+
+    { "op": "bookmark.save", "params": { "name": "Overview", "target": [0.0, 0.5, 0.0], "distance": 6.0, "yaw": 0.6, "pitch": -0.35 } },
+    { "op": "bookmark.recall", "params": { "name": "Overview" } },
+    { "op": "selection.set", "params": { "entities": ["00000000-0000-4000-8000-000000000003", "00000000-0000-4000-8000-000000000007"], "active": "00000000-0000-4000-8000-000000000003" } }
+  ]
+}

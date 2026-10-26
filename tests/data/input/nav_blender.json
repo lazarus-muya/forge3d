@@ -1,0 +1,94 @@
+{
+  "format": "forge3d.input_replay",
+  "version": 1,
+  "preset": "blender",
+  "viewport": [
+    800,
+    600
+  ],
+  "description": "orbit +120,+40 px; pan +60,-30 px; zoom in 2 wheel notches (identical result for every preset)",
+  "events": [
+    {
+      "frame": 1,
+      "type": "mouse_down",
+      "button": "middle",
+      "x": 400,
+      "y": 300,
+      "modifiers": []
+    },
+    {
+      "frame": 2,
+      "type": "mouse_move",
+      "x": 460,
+      "y": 320,
+      "modifiers": []
+    },
+    {
+      "frame": 3,
+      "type": "mouse_move",
+      "x": 520,
+      "y": 340,
+      "modifiers": []
+    },
+    {
+      "frame": 4,
+      "type": "mouse_up",
+      "button": "middle",
+      "x": 520,
+      "y": 340,
+      "modifiers": []
+    },
+    {
+      "frame": 5,
+      "type": "mouse_down",
+      "button": "middle",
+      "x": 400,
+      "y": 300,
+      "modifiers": [
+        "shift"
+      ]
+    },
+    {
+      "frame": 6,
+      "type": "mouse_move",
+      "x": 430,
+      "y": 285,
+      "modifiers": [
+        "shift"
+      ]
+    },
+    {
+      "frame": 7,
+      "type": "mouse_move",
+      "x": 460,
+      "y": 270,
+      "modifiers": [
+        "shift"
+      ]
+    },
+    {
+      "frame": 8,
+      "type": "mouse_up",
+      "button": "middle",
+      "x": 460,
+      "y": 270,
+      "modifiers": [
+        "shift"
+      ]
+    },
+    {
+      "frame": 9,
+      "type": "wheel",
+      "wheel": 1,
+      "x": 400,
+      "y": 300
+    },
+    {
+      "frame": 10,
+      "type": "wheel",
+      "wheel": 1,
+      "x": 400,
+      "y": 300
+    }
+  ]
+}

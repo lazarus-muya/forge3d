@@ -1,0 +1,3 @@
+newmtl Brick
+Kd 0.8 0.25 0.15
+map_Kd ../textures/checker.png

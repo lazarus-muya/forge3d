@@ -1,0 +1,25 @@
+{
+  "format": "forge3d.input_map",
+  "version": 1,
+  "name": "Unreal",
+  "bindings": [
+    { "action": "nav.fly", "input": "drag", "button": "right" },
+    { "action": "fly.forward", "input": "key", "key": "w" },
+    { "action": "fly.back", "input": "key", "key": "s" },
+    { "action": "fly.left", "input": "key", "key": "a" },
+    { "action": "fly.right", "input": "key", "key": "d" },
+    { "action": "fly.up", "input": "key", "key": "e" },
+    { "action": "fly.down", "input": "key", "key": "q" },
+    { "action": "fly.boost", "input": "key", "key": "left shift" },
+    { "action": "nav.orbit", "input": "drag", "button": "left", "modifiers": ["alt"] },
+    { "action": "nav.pan", "input": "drag", "button": "middle" },
+    { "action": "nav.pan", "input": "drag", "button": "middle", "modifiers": ["alt"] },
+    { "action": "nav.zoom", "input": "drag", "button": "right", "modifiers": ["alt"] },
+    { "action": "nav.zoom", "input": "wheel" },
+    { "action": "view.frame_selection", "input": "key", "key": "f" },
+    { "action": "view.front", "input": "key", "key": "h", "modifiers": ["alt"] },
+    { "action": "view.top", "input": "key", "key": "j", "modifiers": ["alt"] },
+    { "action": "view.right", "input": "key", "key": "k", "modifiers": ["alt"] },
+    { "action": "view.toggle_ortho", "input": "key", "key": "g", "modifiers": ["alt"] }
+  ]
+}

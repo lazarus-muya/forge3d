@@ -1,0 +1,20 @@
+{
+  "format": "forge3d.input_map",
+  "version": 1,
+  "name": "Blender",
+  "bindings": [
+    { "action": "nav.orbit", "input": "drag", "button": "middle" },
+    { "action": "nav.pan", "input": "drag", "button": "middle", "modifiers": ["shift"] },
+    { "action": "nav.zoom", "input": "drag", "button": "middle", "modifiers": ["ctrl"] },
+    { "action": "nav.zoom", "input": "wheel" },
+    { "action": "view.front", "input": "key", "key": "keypad 1" },
+    { "action": "view.back", "input": "key", "key": "keypad 1", "modifiers": ["ctrl"] },
+    { "action": "view.right", "input": "key", "key": "keypad 3" },
+    { "action": "view.left", "input": "key", "key": "keypad 3", "modifiers": ["ctrl"] },
+    { "action": "view.top", "input": "key", "key": "keypad 7" },
+    { "action": "view.bottom", "input": "key", "key": "keypad 7", "modifiers": ["ctrl"] },
+    { "action": "view.toggle_ortho", "input": "key", "key": "keypad 5" },
+    { "action": "view.frame_selection", "input": "key", "key": "keypad ." },
+    { "action": "view.frame_selection", "input": "key", "key": "home" }
+  ]
+}

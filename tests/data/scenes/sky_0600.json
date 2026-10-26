@@ -1,0 +1,180 @@
+{
+  "format": "forge3d.ops",
+  "version": 1,
+  "ops": [
+    {
+      "op": "entity.create",
+      "params": {
+        "name": "Sky",
+        "guid": "00000000-0000-4000-8000-000000000101"
+      }
+    },
+    {
+      "op": "entity.add_component",
+      "params": {
+        "entity": "00000000-0000-4000-8000-000000000101",
+        "component": "Sky"
+      }
+    },
+    {
+      "op": "entity.set_property",
+      "params": {
+        "entity": "00000000-0000-4000-8000-000000000101",
+        "path": "Sky.time_of_day",
+        "value": 6.0
+      }
+    },
+    {
+      "op": "entity.create",
+      "params": {
+        "name": "Ground",
+        "guid": "00000000-0000-4000-8000-000000000102"
+      }
+    },
+    {
+      "op": "entity.add_component",
+      "params": {
+        "entity": "00000000-0000-4000-8000-000000000102",
+        "component": "MeshRenderer"
+      }
+    },
+    {
+      "op": "entity.set_property",
+      "params": {
+        "entity": "00000000-0000-4000-8000-000000000102",
+        "path": "MeshRenderer.mesh",
+        "value": {
+          "path": "tests/data/gltf/Box.glb#mesh/0"
+        }
+      }
+    },
+    {
+      "op": "entity.set_property",
+      "params": {
+        "entity": "00000000-0000-4000-8000-000000000102",
+        "path": "Transform.translation",
+        "value": [
+          0.0,
+          -0.06,
+          0.0
+        ]
+      }
+    },
+    {
+      "op": "entity.set_property",
+      "params": {
+        "entity": "00000000-0000-4000-8000-000000000102",
+        "path": "Transform.scale",
+        "value": [
+          40.0,
+          0.1,
+          40.0
+        ]
+      }
+    },
+    {
+      "op": "entity.create",
+      "params": {
+        "name": "Cube",
+        "guid": "00000000-0000-4000-8000-000000000103"
+      }
+    },
+    {
+      "op": "entity.add_component",
+      "params": {
+        "entity": "00000000-0000-4000-8000-000000000103",
+        "component": "MeshRenderer"
+      }
+    },
+    {
+      "op": "entity.set_property",
+      "params": {
+        "entity": "00000000-0000-4000-8000-000000000103",
+        "path": "MeshRenderer.mesh",
+        "value": {
+          "path": "tests/data/gltf/Box.glb#mesh/0"
+        }
+      }
+    },
+    {
+      "op": "entity.set_property",
+      "params": {
+        "entity": "00000000-0000-4000-8000-000000000103",
+        "path": "Transform.translation",
+        "value": [
+          -1.5,
+          0.5,
+          1.0
+        ]
+      }
+    },
+    {
+      "op": "entity.create",
+      "params": {
+        "name": "Pillar",
+        "guid": "00000000-0000-4000-8000-000000000104"
+      }
+    },
+    {
+      "op": "entity.add_component",
+      "params": {
+        "entity": "00000000-0000-4000-8000-000000000104",
+        "component": "MeshRenderer"
+      }
+    },
+    {
+      "op": "entity.set_property",
+      "params": {
+        "entity": "00000000-0000-4000-8000-000000000104",
+        "path": "MeshRenderer.mesh",
+        "value": {
+          "path": "tests/data/gltf/Box.glb#mesh/0"
+        }
+      }
+    },
+    {
+      "op": "entity.set_property",
+      "params": {
+        "entity": "00000000-0000-4000-8000-000000000104",
+        "path": "Transform.translation",
+        "value": [
+          1.5,
+          1.5,
+          -0.5
+        ]
+      }
+    },
+    {
+      "op": "entity.set_property",
+      "params": {
+        "entity": "00000000-0000-4000-8000-000000000104",
+        "path": "Transform.scale",
+        "value": [
+          0.5,
+          3.0,
+          0.5
+        ]
+      }
+    },
+    {
+      "op": "bookmark.save",
+      "params": {
+        "name": "View",
+        "target": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "distance": 11.0,
+        "yaw": 0.35,
+        "pitch": -0.22
+      }
+    },
+    {
+      "op": "bookmark.recall",
+      "params": {
+        "name": "View"
+      }
+    }
+  ]
+}

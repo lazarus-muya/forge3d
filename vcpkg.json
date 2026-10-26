@@ -1,0 +1,53 @@
+{
+  "$schema": "https://raw.githubusercontent.com/microsoft/vcpkg-tool/main/docs/vcpkg.schema.json",
+  "name": "forge3d",
+  "version-string": "0.1.0",
+  "description": "Lightweight open-source 3D landscape and scene builder",
+  "license": "Apache-2.0",
+  "builtin-baseline": "20ceb8adbf0504d4b0d5e4058a32f9d4fc896391",
+  "dependencies": [
+    "bc7enc-rdo",
+    {
+      "name": "directx-dxc",
+      "platform": "windows | (linux & x64)"
+    },
+    "doctest",
+    "entt",
+    "fastgltf",
+    "glm",
+    {
+      "name": "imgui",
+      "features": [
+        "docking-experimental",
+        "sdl3-binding"
+      ]
+    },
+    "imguizmo",
+    {
+      "name": "ixwebsocket",
+      "default-features": false
+    },
+    "meshoptimizer",
+    "nlohmann-json",
+    "sdl3",
+    "spdlog",
+    "sqlite3",
+    "stb",
+    "taskflow",
+    "tinyexr",
+    "tinyobjloader",
+    "tracy",
+    "ufbx",
+    "xatlas",
+    "zstd"
+  ],
+  "features": {
+    "python": {
+      "description": "The forge3d Python module and embedded interpreter (FORGE3D_WITH_PYTHON)",
+      "dependencies": [
+        "nanobind",
+        "python3"
+      ]
+    }
+  }
+}

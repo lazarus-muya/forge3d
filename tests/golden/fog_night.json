@@ -1,0 +1,257 @@
+{
+  "format": "forge3d.golden",
+  "version": 1,
+  "description": "Volumetric fog: height fog lit by the night's point and spot lights (light cones, glows), sky ambient.",
+  "scripts": [
+    "tests/data/scenes/sky_1200.json"
+  ],
+  "ops": [
+    {
+      "op": "entity.set_property",
+      "params": {
+        "entity": "00000000-0000-4000-8000-000000000101",
+        "path": "Sky.time_of_day",
+        "value": 23.0
+      }
+    },
+    {
+      "op": "entity.create",
+      "params": {
+        "name": "Light 1",
+        "guid": "00000000-0000-4000-8000-000000000311"
+      }
+    },
+    {
+      "op": "entity.add_component",
+      "params": {
+        "entity": "00000000-0000-4000-8000-000000000311",
+        "component": "Light"
+      }
+    },
+    {
+      "op": "entity.set_property",
+      "params": {
+        "entity": "00000000-0000-4000-8000-000000000311",
+        "path": "Light.type",
+        "value": 1
+      }
+    },
+    {
+      "op": "entity.set_property",
+      "params": {
+        "entity": "00000000-0000-4000-8000-000000000311",
+        "path": "Light.color",
+        "value": [
+          1.0,
+          0.55,
+          0.2
+        ]
+      }
+    },
+    {
+      "op": "entity.set_property",
+      "params": {
+        "entity": "00000000-0000-4000-8000-000000000311",
+        "path": "Light.intensity",
+        "value": 40.0
+      }
+    },
+    {
+      "op": "entity.set_property",
+      "params": {
+        "entity": "00000000-0000-4000-8000-000000000311",
+        "path": "Light.range",
+        "value": 8.0
+      }
+    },
+    {
+      "op": "entity.set_property",
+      "params": {
+        "entity": "00000000-0000-4000-8000-000000000311",
+        "path": "Transform.translation",
+        "value": [
+          -2.0,
+          1.2,
+          1.5
+        ]
+      }
+    },
+    {
+      "op": "entity.create",
+      "params": {
+        "name": "Light 2",
+        "guid": "00000000-0000-4000-8000-000000000312"
+      }
+    },
+    {
+      "op": "entity.add_component",
+      "params": {
+        "entity": "00000000-0000-4000-8000-000000000312",
+        "component": "Light"
+      }
+    },
+    {
+      "op": "entity.set_property",
+      "params": {
+        "entity": "00000000-0000-4000-8000-000000000312",
+        "path": "Light.type",
+        "value": 1
+      }
+    },
+    {
+      "op": "entity.set_property",
+      "params": {
+        "entity": "00000000-0000-4000-8000-000000000312",
+        "path": "Light.color",
+        "value": [
+          0.3,
+          0.6,
+          1.0
+        ]
+      }
+    },
+    {
+      "op": "entity.set_property",
+      "params": {
+        "entity": "00000000-0000-4000-8000-000000000312",
+        "path": "Light.intensity",
+        "value": 40.0
+      }
+    },
+    {
+      "op": "entity.set_property",
+      "params": {
+        "entity": "00000000-0000-4000-8000-000000000312",
+        "path": "Light.range",
+        "value": 8.0
+      }
+    },
+    {
+      "op": "entity.set_property",
+      "params": {
+        "entity": "00000000-0000-4000-8000-000000000312",
+        "path": "Transform.translation",
+        "value": [
+          2.5,
+          1.0,
+          -1.0
+        ]
+      }
+    },
+    {
+      "op": "entity.create",
+      "params": {
+        "name": "Light 3",
+        "guid": "00000000-0000-4000-8000-000000000313"
+      }
+    },
+    {
+      "op": "entity.add_component",
+      "params": {
+        "entity": "00000000-0000-4000-8000-000000000313",
+        "component": "Light"
+      }
+    },
+    {
+      "op": "entity.set_property",
+      "params": {
+        "entity": "00000000-0000-4000-8000-000000000313",
+        "path": "Light.type",
+        "value": 2
+      }
+    },
+    {
+      "op": "entity.set_property",
+      "params": {
+        "entity": "00000000-0000-4000-8000-000000000313",
+        "path": "Light.color",
+        "value": [
+          1.0,
+          1.0,
+          0.9
+        ]
+      }
+    },
+    {
+      "op": "entity.set_property",
+      "params": {
+        "entity": "00000000-0000-4000-8000-000000000313",
+        "path": "Light.intensity",
+        "value": 200.0
+      }
+    },
+    {
+      "op": "entity.set_property",
+      "params": {
+        "entity": "00000000-0000-4000-8000-000000000313",
+        "path": "Light.range",
+        "value": 10.0
+      }
+    },
+    {
+      "op": "entity.set_property",
+      "params": {
+        "entity": "00000000-0000-4000-8000-000000000313",
+        "path": "Transform.translation",
+        "value": [
+          0.0,
+          4.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "op": "entity.set_property",
+      "params": {
+        "entity": "00000000-0000-4000-8000-000000000313",
+        "path": "Transform.rotation",
+        "value": [
+          0.7071068,
+          -0.7071068,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "op": "entity.create",
+      "params": {
+        "name": "Fog",
+        "guid": "00000000-0000-4000-8000-000000000321"
+      }
+    },
+    {
+      "op": "entity.add_component",
+      "params": {
+        "entity": "00000000-0000-4000-8000-000000000321",
+        "component": "HeightFog"
+      }
+    },
+    {
+      "op": "entity.set_property",
+      "params": {
+        "entity": "00000000-0000-4000-8000-000000000321",
+        "path": "HeightFog.density",
+        "value": 0.05
+      }
+    },
+    {
+      "op": "entity.set_property",
+      "params": {
+        "entity": "00000000-0000-4000-8000-000000000321",
+        "path": "HeightFog.height_falloff",
+        "value": 0.3
+      }
+    }
+  ],
+  "capture": {
+    "width": 480,
+    "height": 270,
+    "mode": "lit",
+    "bookmark": "View"
+  },
+  "threshold": {
+    "ssim": 0.99,
+    "block_ssim": 0.9
+  }
+}

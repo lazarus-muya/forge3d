@@ -1,0 +1,88 @@
+{
+  "format": "forge3d.ops",
+  "version": 1,
+  "ops": [
+    {
+      "op": "terrain.create",
+      "params": {
+        "name": "Terrain",
+        "guid": "00000000-0000-4000-8000-0000000008a1",
+        "tiles": 32,
+        "size": 8192.0,
+        "max_height": 900.0,
+        "seed": 4,
+        "frequency": 3.0
+      }
+    },
+    {
+      "op": "entity.create",
+      "params": {
+        "name": "Sky",
+        "guid": "00000000-0000-4000-8000-0000000008a2"
+      }
+    },
+    {
+      "op": "entity.add_component",
+      "params": {
+        "entity": "00000000-0000-4000-8000-0000000008a2",
+        "component": "Sky"
+      }
+    },
+    {
+      "op": "entity.set_property",
+      "params": {
+        "entity": "00000000-0000-4000-8000-0000000008a2",
+        "path": "Sky.time_of_day",
+        "value": 15.5
+      }
+    },
+    {
+      "op": "bookmark.save",
+      "params": {
+        "name": "Near",
+        "target": [
+          0,
+          960,
+          0
+        ],
+        "distance": 180,
+        "yaw": 0.6,
+        "pitch": -0.3
+      }
+    },
+    {
+      "op": "bookmark.save",
+      "params": {
+        "name": "Mid",
+        "target": [
+          0,
+          700,
+          0
+        ],
+        "distance": 1500,
+        "yaw": 0.6,
+        "pitch": -0.3
+      }
+    },
+    {
+      "op": "bookmark.save",
+      "params": {
+        "name": "Far",
+        "target": [
+          0,
+          300,
+          0
+        ],
+        "distance": 4200,
+        "yaw": 0.6,
+        "pitch": -0.7
+      }
+    },
+    {
+      "op": "bookmark.recall",
+      "params": {
+        "name": "Near"
+      }
+    }
+  ]
+}

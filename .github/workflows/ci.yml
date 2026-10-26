@@ -1,0 +1,141 @@
+# SPDX-License-Identifier: Apache-2.0
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  VCPKG_ROOT: ${{ github.workspace }}/.vcpkg
+  VCPKG_BINARY_SOURCES: clear;files,${{ github.workspace }}/.vcpkg-cache,readwrite
+  VCPKG_DISABLE_METRICS: 1
+
+jobs:
+  lint:
+    name: Lint (format, licence headers)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install clang-format==21.1.8
+      - name: clang-format
+        run: python tools/format.py --check
+      - name: Licence headers
+        run: python tools/check_license_headers.py
+
+  build:
+    name: Build & test (${{ matrix.preset }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-latest
+            preset: win-msvc
+          - os: ubuntu-latest
+            preset: linux-gcc
+          - os: ubuntu-latest
+            preset: linux-clang
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Linux system packages
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ninja-build pkg-config autoconf autoconf-archive automake libtool xvfb \
+            libx11-dev libxext-dev libxrandr-dev libxcursor-dev libxfixes-dev libxi-dev libxss-dev libxtst-dev \
+            libxkbcommon-dev libwayland-dev wayland-protocols libegl1-mesa-dev libgl1-mesa-dev libdbus-1-dev \
+            libudev-dev libibus-1.0-dev libdrm-dev libgbm-dev \
+            libvulkan1 mesa-vulkan-drivers
+
+      - name: MSVC developer environment
+        if: runner.os == 'Windows'
+        uses: ilammy/msvc-dev-cmd@v1
+        with:
+          arch: x64
+
+      - name: vcpkg (at the manifest baseline)
+        shell: bash
+        run: |
+          baseline=$(python3 -c "import json;print(json.load(open('vcpkg.json'))['builtin-baseline'])" 2>/dev/null \
+                     || python -c "import json;print(json.load(open('vcpkg.json'))['builtin-baseline'])")
+          git clone https://github.com/microsoft/vcpkg.git "$VCPKG_ROOT"
+          git -C "$VCPKG_ROOT" checkout "$baseline"
+          if [ "$RUNNER_OS" = "Windows" ]; then "$VCPKG_ROOT/bootstrap-vcpkg.bat" -disableMetrics; else "$VCPKG_ROOT/bootstrap-vcpkg.sh" -disableMetrics; fi
+
+      - name: vcpkg binary cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ github.workspace }}/.vcpkg-cache
+          key: vcpkg-${{ matrix.preset }}-${{ hashFiles('vcpkg.json') }}
+          restore-keys: vcpkg-${{ matrix.preset }}-
+
+      - name: Configure
+        run: cmake --preset ${{ matrix.preset }}
+
+      - name: Build (Debug)
+        run: cmake --build --preset ${{ matrix.preset }}-debug
+
+      - name: Unit tests (includes the Diligent-include and layering checks)
+        run: ctest --preset ${{ matrix.preset }}-debug -L unit
+
+      # The JSON-RPC end-to-end test (integration.rpc) talks to the editor over WebSocket.
+      - name: Python test dependencies
+        run: python -m pip install websockets
+
+      # Hosted runners have no GPU: D3D12 can only use WARP and Linux uses lavapipe.
+      # Non-blocking until verified on GitHub (phases.md P0.2 / P1.1 [human]).
+      - name: GPU integration tests (Windows, WARP)
+        if: runner.os == 'Windows'
+        continue-on-error: true
+        run: ctest --preset ${{ matrix.preset }}-debug -L integration
+
+      - name: GPU integration tests (Linux, Xvfb + lavapipe)
+        if: runner.os == 'Linux'
+        continue-on-error: true
+        run: xvfb-run -a ctest --preset ${{ matrix.preset }}-debug -L integration
+
+      # Golden images (phases.md P4.5): software rasterisers, so results don't depend on
+      # the runner's GPU. Windows renders on WARP (the references were made with it);
+      # Linux on lavapipe, non-blocking until lavapipe references (<name>.vulkan.png) exist.
+      - name: Golden-image tests (Windows, WARP)
+        if: runner.os == 'Windows'
+        run: |
+          cmake --build --preset ${{ matrix.preset }}-release --target forge3d-cli
+          ctest --preset ${{ matrix.preset }}-release -L golden --output-on-failure
+
+      - name: Golden-image tests (Linux, lavapipe)
+        if: runner.os == 'Linux'
+        continue-on-error: true
+        run: |
+          cmake --build --preset ${{ matrix.preset }}-release --target forge3d-cli
+          ctest --preset ${{ matrix.preset }}-release -L golden --output-on-failure
+
+      - name: Upload golden-image results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: golden-${{ matrix.preset }}
+          path: build/${{ matrix.preset }}/test-output/golden/
+          if-no-files-found: ignore
+          retention-days: 14
+
+      - name: Upload editor artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: forge3d-${{ matrix.preset }}-debug
+          path: |
+            build/${{ matrix.preset }}/bin/Debug/
+            build/${{ matrix.preset }}/shaders/
+            !build/${{ matrix.preset }}/bin/Debug/**/*.ilk
+          if-no-files-found: error
+          retention-days: 14

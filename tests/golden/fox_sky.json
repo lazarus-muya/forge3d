@@ -1,0 +1,41 @@
+{
+  "format": "forge3d.golden",
+  "version": 1,
+  "description": "Textured glTF model under the afternoon sky (image-based lighting).",
+  "models": [
+    "tests/data/gltf/Fox.glb"
+  ],
+  "ops": [
+    {
+      "op": "entity.create",
+      "params": {
+        "name": "Sky",
+        "guid": "00000000-0000-4000-8000-0000000003a1"
+      }
+    },
+    {
+      "op": "entity.add_component",
+      "params": {
+        "entity": "00000000-0000-4000-8000-0000000003a1",
+        "component": "Sky"
+      }
+    },
+    {
+      "op": "entity.set_property",
+      "params": {
+        "entity": "00000000-0000-4000-8000-0000000003a1",
+        "path": "Sky.time_of_day",
+        "value": 15.5
+      }
+    }
+  ],
+  "capture": {
+    "width": 480,
+    "height": 270,
+    "mode": "lit"
+  },
+  "threshold": {
+    "ssim": 0.99,
+    "block_ssim": 0.9
+  }
+}

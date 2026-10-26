@@ -1,0 +1,17 @@
+{
+  "format": "forge3d.golden",
+  "version": 1,
+  "description": "Textured glTF model without a Sky: default sun, hemisphere environment, shadows.",
+  "models": [
+    "tests/data/gltf/Fox.glb"
+  ],
+  "capture": {
+    "width": 480,
+    "height": 270,
+    "mode": "lit"
+  },
+  "threshold": {
+    "ssim": 0.99,
+    "block_ssim": 0.9
+  }
+}

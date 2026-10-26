@@ -1,0 +1,75 @@
+{
+  "format": "forge3d.ops",
+  "version": 1,
+  "ops": [
+    {
+      "op": "terrain.create",
+      "params": {
+        "name": "Terrain",
+        "guid": "00000000-0000-4000-8000-000000000c01",
+        "tiles": 4,
+        "size": 1024.0,
+        "max_height": 260.0,
+        "seed": 5,
+        "frequency": 3.0
+      }
+    },
+    {
+      "op": "entity.create",
+      "params": {
+        "name": "Sky",
+        "guid": "00000000-0000-4000-8000-000000000c02"
+      }
+    },
+    {
+      "op": "entity.add_component",
+      "params": {
+        "entity": "00000000-0000-4000-8000-000000000c02",
+        "component": "Sky"
+      }
+    },
+    {
+      "op": "entity.set_property",
+      "params": {
+        "entity": "00000000-0000-4000-8000-000000000c02",
+        "path": "Sky.time_of_day",
+        "value": 13.0
+      },
+      "value": 15.0
+    },
+    {
+      "op": "bookmark.save",
+      "params": {
+        "name": "Overview",
+        "target": [
+          0,
+          90,
+          0
+        ],
+        "distance": 700,
+        "yaw": 0.6,
+        "pitch": -0.45
+      }
+    },
+    {
+      "op": "bookmark.save",
+      "params": {
+        "name": "Ground",
+        "target": [
+          -100,
+          0,
+          60
+        ],
+        "distance": 40,
+        "yaw": 1.2,
+        "pitch": -0.35
+      }
+    },
+    {
+      "op": "bookmark.recall",
+      "params": {
+        "name": "Overview"
+      }
+    }
+  ]
+}
